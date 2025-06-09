@@ -1,0 +1,7 @@
+Dear all,
+
+This is sample data of {{ run_date }}:
+{{ load_table(sql='SELECT REPORT_MONTH, ASM_NAME, ASM_WID, REPORTING_USM_NAME, REPORTING_USM_WID FROM DM.TBL_FACT_DAILYREPORT_SEC_MONTHLY', n_rows=5) }}
+
+Regards,
+Automation email

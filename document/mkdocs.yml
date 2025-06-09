@@ -1,0 +1,87 @@
+site_name: Project KC EDW documentation
+site_url: http://0.0.0.0
+
+repo_url: https://gitlab.com/kcc9725208/EDW
+
+
+#nav:
+#    - Home: index.md
+#    - Api: api_reference.md
+#    - About: about.md
+#    - User Guide:
+#        -   Writing your docs: about.md
+#        -   Styling your docs: index.md
+
+theme:
+  name: material
+  font:
+      code: Roboto Mono
+  palette:
+
+      # Palette toggle for light mode
+      -   scheme: default
+          toggle:
+              icon: material/brightness-7
+              name: Switch to dark mode
+
+      # Palette toggle for dark mode
+      -   scheme: slate
+          toggle:
+              icon: material/brightness-4
+              name: Switch to light mode
+
+  icon:
+      repo: fontawesome/brands/gitlab
+
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+#    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+#    - navigation.prune
+#    - navigation.indexes
+#    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+    - mkdocstrings:
+    #    default_handler: python
+        handlers:
+            python:
+                paths: [..]
+    - search
+    - glightbox
+    - blog:
+        pagination_if_single_page: true
+        pagination_url_format: "page/{page}"
+        pagination_per_page: 5
+        authors: true
+#        authors_profiles_name: Authors
+        archive: true
+        blog_toc: true
+        post_date_format: full
+

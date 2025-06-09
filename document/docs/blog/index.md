@@ -1,0 +1,2 @@
+# Blogs - FAQ section
+

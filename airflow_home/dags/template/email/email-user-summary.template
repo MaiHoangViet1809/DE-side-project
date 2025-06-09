@@ -1,0 +1,7 @@
+Dear All,
+
+List of Users have updated, run_date={{ run_date }}:
+{{ load_table_from_dicts(email_summary_data) }}
+
+Regards,
+EDW Automation

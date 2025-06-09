@@ -1,0 +1,7 @@
+Dear all,
+
+This is sample data of {{ run_date }}:
+{{ load_table(sql='DM.TEST_REPORT_DATA', n_rows=2) }}
+
+Regards,
+Automation email

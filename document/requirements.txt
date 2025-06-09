@@ -1,0 +1,5 @@
+mkdocs-glightbox
+mkdocs-material
+mkdocs-material[imaging]
+mkdocstrings-python
+mkdocs

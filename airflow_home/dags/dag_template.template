@@ -1,0 +1,56 @@
+from airflow import DAG # noqa
+import os
+from datetime import datetime, timedelta
+
+from dateutil.relativedelta import relativedelta
+from airflow.models.param import Param
+from cores.utils.configs import FrameworkConfigs as cfg
+from cores.orchestration.flow_factory import create_flow
+import cores.logic_repos.objectives as do
+Factory = cfg.Core.FACTORY_CLASS
+
+MODULE_NAME = os.path.splitext(os.path.basename(__file__))[0]
+# ---------------------------------------------------------------------------------------------------------------------
+PARAMS = {
+    "run_dates": Param({
+        "start_date": (datetime.now() + relativedelta(days=0)).strftime("%Y-%m-%d"),
+        "end_date": (datetime.now() + relativedelta(days=0)).strftime("%Y-%m-%d"),
+        "mode": "monthly",
+        "interval": 1,
+    }, type=["object", "array"])
+}
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------------------------------
+def Pipelines(msg):
+
+    t_step_1 = Factory(do.spark_transformation)(
+        task_id=f"Transform- NAME OF TASK",
+        pipe_msg=msg,
+        task_params=dict(
+            source_path="<< INPUT TABLE NAME (INCLUDE SCHEMA) HERE >>.sql",
+            sink_path="<< INPUT TABLE NAME (INCLUDE SCHEMA) HERE >>",
+
+            partition_column="<< INPUT PARTITION COLUMN NAME HERE >>",
+            partition_value="[[ run_date ]]",
+
+            refresh_type=do.RefreshType.partition_mtd,
+        ),
+    )
+
+
+
+my_dag = create_flow(
+    schedule=None,  # "10 0-21/3 * * *"
+    dag_id=MODULE_NAME,
+
+    start_date=datetime(2022, 1, 1),
+    catchup=False,
+
+    steps=Pipelines,
+    params=PARAMS,
+    max_active_runs=1,
+    max_active_tasks=3,
+    tags=["TRANSFORMATION"]
+)

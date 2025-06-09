@@ -1,0 +1,21 @@
+psycopg2-binary
+dask[distributed]
+bokeh>=2.4.2,<3
+pyspark==3.3.2
+# apache-airflow-providers-apache-spark
+virtualenv
+gevent
+python-dotenv
+apache-airflow-providers-daskexecutor
+apache-airflow-providers-microsoft-mssql
+
+pandas==2.1.4
+openpyxl
+tabulate
+
+pyodbc
+polars-lts-cpu
+blosc
+
+apache-airflow-providers-sftp
+sqlglot

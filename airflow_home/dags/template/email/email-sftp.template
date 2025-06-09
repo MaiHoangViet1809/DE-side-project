@@ -1,0 +1,7 @@
+Dear all,
+
+Alert !! SFTP File is missing, run_date={{ run_date }}:
+{{ load_table(sql=dataset, n_rows=100) }}
+
+Regards,
+Automation email

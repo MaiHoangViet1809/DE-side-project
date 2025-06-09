@@ -1,0 +1,34 @@
+tabulate
+
+
+httpx
+virtualenv
+
+blosc
+chardet
+cloudpickle==2.1.0
+
+# connector
+openpyxl
+pyodbc
+psycopg2-binary
+pyxlsb
+
+# airflow dependencies
+bokeh>=2.4.2,<3
+apache-airflow==2.8.4
+apache-airflow-providers-daskexecutor
+apache-airflow-providers-microsoft-mssql
+apache-airflow-providers-sftp
+dask[distributed]
+
+# data processing
+pandas==2.1.4
+# polars-lts-cpu[xlsx2csv,connectorx,openpyxl]
+polars[xlsx2csv]
+pyarrow
+pyspark==3.3.3
+
+# sql lineage
+sqlglot==20.11.0
+diagrams
